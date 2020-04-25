@@ -20,9 +20,9 @@ times = 60
 x = 360 // times
 
 
-# RGB格式颜色转换为16进制颜色格式
+# RGB格式颜色转为16进制颜色格式
 def rgb_to_hex(rgb):
-    rgb = rgb.split(',')  # 将RGB格式划分开来
+    rgb = rgb.split(',')  # 将RGB格式划分开
     color = '#'
     for i in rgb:
         num = int(i)
@@ -32,9 +32,9 @@ def rgb_to_hex(rgb):
     return color
 
 
-# RGB格式颜色转换为16进制颜色格式
+# RGB格式颜色转为16进制颜色格式
 def rgb_list_to_hex(rgb):
-    # RGB = rgb.split(',')  # 将RGB格式划分开来
+    # RGB = rgb.split(',')  # 将RGB格式划分开
     color = '#'
     for i in rgb:
         num = int(i)
@@ -44,7 +44,7 @@ def rgb_list_to_hex(rgb):
     return color
 
 
-# 16进制颜色格式颜色转换为RGB格式
+# 16进制颜色格式颜色转为RGB格式
 def hex_to_rgb(hex1):
     r = int(hex1[1:3], 16)
     g = int(hex1[3:5], 16)
