@@ -1,9 +1,10 @@
 # by Cjsah
 import math
 import os
-
 import seaborn as sns
+import matplotlib.pyplot as plt
 
+# 初始化
 z = 0
 c = 0
 v = 0
@@ -77,6 +78,7 @@ def gradient_color(color_list, color_sum=360):
     return color_map
 
 
+# 渐变
 if __name__ == '__main__':
     # 在此填入渐变颜色
     input_colors = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "#00FFFF",
@@ -91,12 +93,15 @@ if __name__ == '__main__':
     # print(rgb)
     # plt.show()
 
+# 防重名文件
 if os.path.exists(exp1):
     os.remove(exp1)
 
+# 写入文件:重置
 with open(exp1, "w") as f:
     f.write("scoreboard players reset @s fly_jtpk_bst\n")
 
+# 写入文件:粒子
 while z < 360:
 
     c = z // x
@@ -117,6 +122,7 @@ while z < 360:
 
     z += x
 
+# 删旧文件加新文件
 if os.path.exists(exp2):
     os.remove(exp2)
 os.rename(exp1, exp2)
