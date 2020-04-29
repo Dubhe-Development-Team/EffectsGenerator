@@ -24,24 +24,24 @@ height = im.size[1]
 # 循环写入
 for x in range(width):
     # 跳过透明像素
-    for y in range(height):
-        if pix[x, y][3] == 0:
+    for z in range(height):
+        if pix[x, z][3] == 0:
             continue
         # 写入文件
         with open(expo, "r+") as f:
             f.read()
             f.write("particle dust ")
-            f.write(str(pix[x, y][0] / 255))    # 计算 R 值
+            f.write(str(pix[x, z][0] / 255))    # 计算 R 值
             f.write(" ")
-            f.write(str(pix[x, y][1] / 255))    # 计算 G 值
+            f.write(str(pix[x, z][1] / 255))    # 计算 G 值
             f.write(" ")
-            f.write(str(pix[x, y][2] / 255))    # 计算 B 值
+            f.write(str(pix[x, z][2] / 255))    # 计算 B 值
             f.write(" ")
-            f.write(str(pix[x, y][3] / 255))    # 计算 A 值
+            f.write(str(pix[x, z][3] / 255))    # 计算 A 值
             f.write(" ~")
             f.write(str('%.1f' % ((x - (width / 2)) / 10)))     # 计算 x 坐标
             f.write(" ~ ~")
-            f.write(str('%.1f' % ((y - (height / 2)) / 10)))    # 计算 z 坐标
+            f.write(str('%.1f' % ((z - (height / 2)) / 10)))    # 计算 z 坐标
             f.write(" ~ ~ ~ 0 0 force\n")
 
 # 改名(删除旧重名文件)
