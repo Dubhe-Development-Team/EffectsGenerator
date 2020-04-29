@@ -6,8 +6,9 @@ from PIL import Image
 # 输入输出目录
 expi = os.path.join(os.getcwd(), "1.png")
 expo = os.path.join(os.getcwd(), "command.txt")
+expr = os.path.join(os.getcwd(), "dust.mcfunction")
 
-# 防止与已存在文件冲突
+# 防重名
 if os.path.exists(expo):
     os.remove(expo)
 # 文件不存在时新建文件
@@ -42,3 +43,8 @@ for x in range(width):
             f.write(" ~ ~")
             f.write(str('%.1f' % ((y - (height / 2)) / 10)))    # 计算 z 坐标
             f.write(" ~ ~ ~ 0 0 force\n")
+
+# 改名(删除旧重名文件)
+if os.path.exists(expr):
+    os.remove(expr)
+os.rename(expo, expr)
