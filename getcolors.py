@@ -1,3 +1,5 @@
+# by Cjsah
+# 获取图片各个像素RGBA并生成particle指令
 import os
 from PIL import Image
 
