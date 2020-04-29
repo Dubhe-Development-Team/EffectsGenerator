@@ -3,14 +3,17 @@
 import os
 from PIL import Image
 
+# 输入隔几个像素取一个点
+num = int(input("请输入正整数："))
+
 # 输入输出目录
 expi = os.path.join(os.getcwd(), "1.png")
-expo = os.path.join(os.getcwd(), "command.txt")
-expr = os.path.join(os.getcwd(), "dust.mcfunction")
+expo = os.path.join(os.getcwd(), "dust.mcfunction")
 
 # 防重名
 if os.path.exists(expo):
     os.remove(expo)
+
 # 文件不存在时新建文件
 with open(expo, "w") as f:
     pass
@@ -23,8 +26,11 @@ height = im.size[1]
 
 # 循环写入
 for x in range(width):
-    # 跳过透明像素
     for z in range(height):
+        # 隔像素取点
+        if (x + z) % num != 0:
+            continue
+        # 跳过透明像素
         if pix[x, z][3] == 0:
             continue
         # 写入文件
@@ -43,8 +49,3 @@ for x in range(width):
             f.write(" ~ ~")
             f.write(str('%.1f' % ((z - (height / 2)) / 10)))    # 计算 z 坐标
             f.write(" ~ ~ ~ 0 0 force\n")
-
-# 改名(删除旧重名文件)
-if os.path.exists(expr):
-    os.remove(expr)
-os.rename(expo, expr)
