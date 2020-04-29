@@ -27,7 +27,7 @@ for x in range(width):
     for y in range(height):
         if pix[x, y][3] == 0:
             continue
-        # 写入
+        # 写入文件
         with open(expo, "r+") as f:
             f.read()
             f.write("particle dust ")
