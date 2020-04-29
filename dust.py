@@ -98,7 +98,7 @@ if __name__ == '__main__':
 if os.path.exists(exp1):
     os.remove(exp1)
 
-# 写入文件:重置
+# 文件不存在时新建文件
 with open(exp1, "w") as f:
     f.write("scoreboard players reset @s fly_jtpk_bst\n")
 
@@ -123,7 +123,7 @@ while z < 360:
 
     z += x
 
-# 删旧文件加新文件
+# 改名(删除旧重名文件)
 if os.path.exists(exp2):
     os.remove(exp2)
 os.rename(exp1, exp2)
