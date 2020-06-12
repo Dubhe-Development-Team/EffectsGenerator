@@ -3,7 +3,6 @@
 import os
 from PIL import Image
 from pathlib import Path
-import math
 
 # 输入输出目录
 # expi = Path()/'input'
