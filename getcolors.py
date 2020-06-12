@@ -2,29 +2,54 @@
 # 获取图片各个像素RGBA并生成particle指令
 import os
 from PIL import Image
+from pathlib import Path
 import math
 
-
 # 输入输出目录
-expi = os.path.join(os.getcwd(), "1.png")
-expo = os.path.join(os.getcwd(), "dust.mcfunction")
+# expi = Path()/'input'
+expi = Path()/'input/1.png'
+expo = Path()/'output/dust.mcfunction'
 
 # 防重名
 if os.path.exists(expo):
     os.remove(expo)
 
-# 文件不存在时新建文件
+# 判断文件(夹)存在
+if not os.path.exists(Path()/'input'):
+    os.makedirs(Path()/'input')
+if not os.path.exists(Path()/'output'):
+    os.makedirs(Path()/'output')
 with open(expo, "w") as f:
     pass
 
+# 索引文件
+imgname = os.listdir(Path())
+delete = []
+for i in imgname:
+    if not i[-3:] == '.py':
+        delete.append(i)
+for i in delete:
+    imgname.remove(i)
+
+# 输入缩放文件大小
+size = int(input('请输入你要转换成的图片大小(整数): '))
+
 # 获取图片信息
 im = Image.open(expi)
-if im.size[0] > 128 and im.size[1] > 128:
-    # 目前只有方形图片可用
-    im = im.resize((128, 128))
-pix = im.load()
 width = im.size[0]
 height = im.size[1]
+# 判断大小并缩放
+if width > size or height > size:
+    if width >= height:
+        scale = size / width
+    else:
+        scale = size / height
+    im = im.resize((round(width * scale), round(height * scale)), Image.ANTIALIAS)
+    width = im.size[0]
+    height = im.size[1]
+# 获取像素点
+pix = im.load()
+im.show()
 
 # 循环写入
 for x in range(width):
