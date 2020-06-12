@@ -2,9 +2,8 @@
 # 获取图片各个像素RGBA并生成particle指令
 import os
 from PIL import Image
+import math
 
-# 输入隔几个像素取一个点
-num = int(input("请输入正整数："))
 
 # 输入输出目录
 expi = os.path.join(os.getcwd(), "1.png")
@@ -23,6 +22,21 @@ im = Image.open(expi)
 pix = im.load()
 width = im.size[0]
 height = im.size[1]
+h = im.height      #图片的高
+w = im.width       #图片的宽
+x = 128
+
+#计算隔几个像素取点
+if h>w:
+    if h>x:
+        num = math.ceil(h/x-1)
+    else:
+        num = 0
+else:
+    if w>x:
+        num = math.ceil(w/x-1)
+    else:
+        num = 0
 
 # 循环写入
 for x in range(width):
