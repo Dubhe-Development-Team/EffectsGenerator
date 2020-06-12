@@ -1,4 +1,4 @@
-# by Cjsah
+# by Cjsah, Gu_ZT
 # 获取图片各个像素RGBA并生成particle指令
 import os
 from PIL import Image
@@ -19,31 +19,16 @@ with open(expo, "w") as f:
 
 # 获取图片信息
 im = Image.open(expi)
+if im.size[0] > 128 and im.size[1] > 128:
+    # 目前只有方形图片可用
+    im = im.resize((128, 128))
 pix = im.load()
 width = im.size[0]
 height = im.size[1]
-h = im.height      #图片的高
-w = im.width       #图片的宽
-x = 128
-
-#计算隔几个像素取点
-if h>w:
-    if h>x:
-        num = math.ceil(h/x-1)
-    else:
-        num = 0
-else:
-    if w>x:
-        num = math.ceil(w/x-1)
-    else:
-        num = 0
 
 # 循环写入
 for x in range(width):
     for z in range(height):
-        # 隔像素取点
-        if (x + z) % num != 0:
-            continue
         # 跳过透明像素
         if pix[x, z][3] == 0:
             continue
