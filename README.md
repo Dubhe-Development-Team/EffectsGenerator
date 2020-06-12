@@ -16,8 +16,8 @@
 
 ### 参与贡献
 
-- Cjsah
-- 待补充
+- [Cjsah](https://gitee.com/cjsah)
+- [Gu_ZT666](https://gitee.com/gu_zt666)
 - 待补充
 - 待补充
 - 待补充
