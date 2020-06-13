@@ -8,7 +8,7 @@
 
 ### 使用方法
 
-- 在文件目录shell输入python getcolors.py
+- 在文件目录打开shell输入python getcolors.py
 
 ### 运行环境
 
